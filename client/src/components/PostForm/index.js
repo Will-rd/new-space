@@ -33,8 +33,8 @@ const PostForm = () => {
         },
     });
 
-    const handleFormSubmit = async (e) => {
-        e.preventDefault();
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
 
         try {
             const { data } = await addPost({
@@ -50,8 +50,8 @@ const PostForm = () => {
         }
     };
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
+    const handleChange = (event) => {
+        const { name, value } = event.target;
 
         if (name === 'postText' && value.length <= 280) {
             setPostText(value);

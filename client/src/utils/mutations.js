@@ -3,58 +3,57 @@ import { gql } from '@apollo/client';
 
 export const LOGIN_USER = gql`
 mutation Mutation($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      token
-      user {
-        _id
-        username
-      }
+  login(email: $email, password: $password) {
+    token
+    user {
+      _id
+      username
     }
   }
+}
 `;
 
 export const ADD_USER = gql`
-mutation Mutation($email: String!, $username: String!, $password: String!) {
-    addUser(email: $email, username: $username, password: $password) {
-      token
-      user {
-        _id
-        username
-      }
+mutation AddUser($email: String!, $username: String!, $password: String!) {
+  addUser(email: $email, username: $username, password: $password) {
+    token
+    user {
+      _id
+      username
     }
   }
+}
 `;
 
 export const ADD_POST = gql`
-utation Mutation($postText: String!) {
-    addPost(postText: $postText) {
+mutation AddPost($postText: String!) {
+  addPost(postText: $postText) {
+    _id
+    postText
+    postAuthor
+    createdAt
+    comments {
       _id
-      postText
-      postAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-      }
+      commentText
     }
   }
+}
 `;
 
 export const ADD_COMMENT = gql`
 mutation AddComment($postId: ID!, $commentText: String!) {
-    addComment(postId: $postId, commentText: $commentText) {
+  addComment(postId: $postId, commentText: $commentText) {
+    _id
+    postText
+    postAuthor
+    createdAt
+    comments {
       _id
-      postText
-      postAuthor
+      commentText
       createdAt
-      comments {
-        _id
-        commentText
-        commentAuthor
-        createdAt
-      }
     }
   }
+}
 `;
 
 export const REMOVE_USER = gql`
@@ -75,7 +74,7 @@ mutation RemoveUser($userId: ID!) {
 `;
 
 export const REMOVE_POST = gql`
-mutation Mutation($postId: ID!) {
+mutation RemovePost($postId: ID!) {
     removePost(postId: $postId) {
       _id
       comments {
@@ -96,7 +95,7 @@ mutation RemoveComment($postId: ID!) {
 `;
 
 export const UPDATE_USER = gql`
-mutation Mutation($userId: ID!, $email: String, $username: String, $password: String) {
+mutation UpdateUser($userId: ID!, $email: String, $username: String, $password: String) {
     updateUser(userId: $userId, email: $email, username: $username, password: $password) {
       password
       username
