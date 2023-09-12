@@ -44,7 +44,7 @@ query Query($postId: ID!) {
 `;
 
 export const QUERY_ME = gql`
-query me {
+ query me {
   me {
     _id
     username
@@ -56,5 +56,5 @@ query me {
       createdAt
     }
   }
-}
+ }
 `;
